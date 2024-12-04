@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.css.map') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+
+<body>
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="{{ url_for('index') }}">
+                Restaurant Waste Management System
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="{{ 'navbar-item active' if request.path == '/' else 'navbar-item' }}"
+                    href="{{ url_for('index') }}">Home</a>
+                <a class="{{ 'navbar-item active' if request.path == '/add/' else 'navbar-item' }}"
+                    href="{{ url_for('add') }}">Calculate</a>
+                <a class="{{ 'navbar-item active' if request.path == '/view/' else 'navbar-item' }}"
+                    href="{{ url_for('view') }}">View All Data</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container is-fluid">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+
+</html>

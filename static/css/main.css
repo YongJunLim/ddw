@@ -1,0 +1,27 @@
+@font-face {
+    font-family: "Bai Jamjuree";
+    src:url('../fonts/BaiJamjuree-Regular.ttf') format('truetype');
+
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Bai Jamjuree";
+    src:url('../fonts/BaiJamjuree-Bold.ttf') format('truetype');
+
+    font-weight: 700;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Bai Jamjuree';
+}
+
+div.navbar-brand {
+    font-weight: 700;
+}
+.navbar-item.active {
+    font-weight: 700;
+    text-decoration: underline;
+}

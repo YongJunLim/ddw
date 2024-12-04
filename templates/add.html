@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}Add Record{% endblock %}
+{% block content %}
+<h1 class="is-size-1">Calculate!</h1>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+{% if category == 'error' %}
+<div class="is-size-3 has-text-danger">{{ message }}</div>
+{% elif category == 'success' %}
+<div class="is-size-3 has-text-success">{{ message }}</div>
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% endwith %}
+<form class="" action="{{ url_for('add') }}" method="POST">
+  <label class="is-size-4" for="guestno">Enter the number of guests:</label>
+  <div class="field">
+    <input id="guestno" name="guestno" class="input is-medium" type="text" placeholder="Number of Guests" />
+  </div>
+  <label class="is-size-4" for="serveno">Enter the number of servings ordered:</label>
+  <div class="field">
+    <input type="text" id="serveno" name="serveno" class="input is-medium" type="text"
+      placeholder="Number of Servings" />
+  </div>
+
+  <label class="is-size-4" for="price">Select a pricing category:</label>
+  <div class="field">
+    <div class="select is-multiple is-medium">
+      <select multiple id="price" name="price" size="3">
+        <option value="1">Low</option>
+        <option value="2">Moderate</option>
+        <option value="3">High</option>
+      </select>
+    </div>
+  </div>
+
+  <label class="is-size-4" for="prep">Select the preparation method of the food:</label>
+  <div class="field">
+    <div class="select is-multiple is-medium">
+      <select multiple id="prep" name="prep" size="3">
+        <option value="1">Finger Food</option>
+        <option value="2">Sit-down Dinner</option>
+        <option value="3">Buffet</option>
+      </select>
+    </div>
+  </div>
+
+  <label class="is-size-4" for="regular">Select the customer type:</label>
+  <div class="field">
+    <div class="select is-multiple is-medium">
+      <select multiple id="regular" name="regular" size="2">
+        <option value="2">Regular</option>
+        <option value="1">Occasional</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="field">
+    <!-- <input type="submit" value="Submit"> -->
+    <button class="button is-primary is-medium" type="submit">
+      Calculate
+    </button>
+  </div>
+</form>
+{% endblock %}

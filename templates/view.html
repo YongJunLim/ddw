@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}View All Data{% endblock %}
+{% block content %}
+<h1 class="is-size-1">View Records</h1>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+{% if category == 'error' %}
+<div class="is-size-3 has-text-danger">{{ message }}</div>
+{% elif category == 'success' %}
+<div class="is-size-3 has-text-success">{{ message }}</div>
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% endwith %}
+<table class="table is-bordered is-striped">
+    <tr>
+        <th>Datetime</th>
+        <th>No. of Guests</th>
+        <th>No. of Servings</th>
+        <th>Pricing Category</th>
+        <th>Prep Method</th>
+        <th>Customer Type</th>
+        <th>Predicted No. of Servings Wasted</th>
+        <th>Epoch Time</th>
+    </tr>
+    {% for item in items %}
+    <tr>
+        <td>{{ item[7] }}</td>
+        <td>{{ item[1] }}</td>
+        <td>{{ item[2] }}</td>
+        <td>{{ item[3] }}</td>
+        <td>{{ item[4] }}</td>
+        <td>{{ item[5] }}</td>
+        <td class="has-text-weight-bold">{{ item[6]|round(2) }}</td>
+        <td>{{ item[0] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<button class="button is-primary" onclick="window.location.href='{{url_for('add')}}'">Add new record</button>
+{% endblock %}
